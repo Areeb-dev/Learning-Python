@@ -16,12 +16,6 @@ encoded_password = quote_plus(db_password)
 DATABASE_URL = f"postgresql://{db_user}:{encoded_password}@{db_host}/postgres"
 
 engine = create_engine(DATABASE_URL)
-try:
-    with engine.connect() as connection:
-        connection.execute(text("SELECT 1"))
-    print("Database is connected!")
-except Exception as e:
-    print("Failed to connect to the database.", str(e))
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

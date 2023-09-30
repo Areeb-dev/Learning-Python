@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from helpers import generate_id, run_query
+from helpers import generate_id, run_query,check_db_connect
 from dotenv import load_dotenv
 from config.database import engine, Base, SessionLocal
 from config.models import Student
@@ -81,4 +81,5 @@ def get_students():
 
 if __name__ == "__main__":
     startup_db()
+    check_db_connect(engine)
     app.run(debug=True)
