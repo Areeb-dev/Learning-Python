@@ -6,15 +6,21 @@ def generate_id():
 
 
 def run_query(db, query):
-    with db as session:
-        result = session.execute(text(query))
-        print('result',result)
-        rows = [row[0] for row in result.fetchall()]  
-    return rows
+    query_type = query.split(" ")[0].upper()
+    if query_type == "INSERT" or query_type == "UPDATE":
+        with db as session:
+            session.execute(text(query))
+            session.commit()
+    else:
+        with db as session:
+            result = session.execute(text(query))
+            rows = [row[0] for row in result.fetchall()]
+        return rows
 
-def check_db_connect(engine):
+
+def check_db_connect(db):
     try:
-        with engine.connect() as connection:
+        with db as connection:
             connection.execute(text("SELECT 1"))
         print("Database is connected!")
     except Exception as e:

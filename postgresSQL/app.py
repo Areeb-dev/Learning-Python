@@ -1,9 +1,8 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from helpers import generate_id, run_query,check_db_connect
+from helpers import generate_id, run_query, check_db_connect
 from dotenv import load_dotenv
 from config.database import engine, Base, SessionLocal
-from config.models import Student
 
 db = SessionLocal()
 
@@ -19,7 +18,13 @@ def startup_db():
 
 @app.route("/")
 def index():
-    return jsonify({"success": True, "message": "Welcome To Flask APIs"})
+    return jsonify(
+        {
+            "success": True,
+            "message": "Welcome To Flask APIs",
+            "db": check_db_connect(db),
+        }
+    )
 
 
 @app.route("/add-student", methods=["POST"])
@@ -29,13 +34,14 @@ def add_student():
 
         if "name" not in body or "email" not in body:
             return jsonify({"success": False, "error": "Both Fields are required"})
-        
+
         name = body["name"]
         email = body["email"]
+        id=generate_id()
+      
+        sql_query = f"INSERT INTO student (id, name, email) VALUES ('{id}', '{name}', '{email}')"
 
-        new_user = Student(id=generate_id(),name=name, email=email)
-        db.add(new_user)
-        db.commit()
+        run_query(db, sql_query)
 
         return jsonify(
             {
@@ -54,13 +60,14 @@ def add_student():
             }
         )
 
+
 @app.route("/get-students", methods=["GET"])
 def get_students():
     try:
         select_query = f"SELECT row_to_json(t) FROM (SELECT * FROM student)t"
-       
+
         result = run_query(db, select_query)
-        print('result',result)
+        print("result", result)
         return jsonify(
             {
                 "success": True,
@@ -81,5 +88,4 @@ def get_students():
 
 if __name__ == "__main__":
     startup_db()
-    check_db_connect(engine)
     app.run(debug=True)
