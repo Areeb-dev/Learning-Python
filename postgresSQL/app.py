@@ -3,6 +3,7 @@ from flask_cors import CORS
 from helpers import generate_id, run_query, check_db_connect
 from dotenv import load_dotenv
 from config.database import engine, Base, SessionLocal
+from config.models import *
 
 db = SessionLocal()
 
@@ -37,8 +38,8 @@ def add_student():
 
         name = body["name"]
         email = body["email"]
-        id=generate_id()
-      
+        id = generate_id()
+
         sql_query = f"INSERT INTO student (id, name, email) VALUES ('{id}', '{name}', '{email}')"
 
         run_query(db, sql_query)
