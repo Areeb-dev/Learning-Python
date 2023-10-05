@@ -1,37 +1,44 @@
-Pull Request Title
-Issue Reference: #1234
+# Pull Request Description
 
-Description
-This Pull Request aims to enhance the user registration form validation on the client side, which not only improves user feedback but also minimizes the chances of invalid data submissions.
+## Description
 
-Proposed Changes
-The modifications introduced in this PR are as follows:
+This PR addresses the issue #1234, which was about improving the user registration form's validation in the front end. It enhances the form validation to provide better user feedback and prevent invalid data submissions.
 
-Email Validation: Added client-side validation for email addresses ensuring they adhere to the standard format.
-Password Strength Validation: Real-time validation for password strength with feedback displayed as the user types.
-Error Messages: Improved the clarity and guidance of error messages.
-UI Enhancements: Updated the user interface to prominently display validation errors.
-Visual Aids
-[If any UI modifications or new features are introduced, attach relevant screenshots or GIFs to assist reviewers in visualizing the changes.]
+## Proposed Changes
+
+In this PR, I have made the following changes:
+
+- Added client-side validation for email addresses to ensure they follow the correct format.
+- Implemented real-time validation for password strength and display feedback as the user types.
+- Improved error messages for better clarity and guidance.
+- Updated the user interface to display validation errors prominently.
+
+These changes enhance the user experience during the registration process and reduce the chances of invalid data submissions.
+
+## Screenshots or GIFs
+
+[If your changes include UI modifications or new features, consider adding relevant screenshots or GIFs to help reviewers visualize the changes.]
 
 [Insert screenshots or GIFs here]
 
-Testing Procedure
-The following steps were undertaken to test the changes:
+## Testing
 
-Developed test cases covering various scenarios, including both valid and invalid inputs.
-Conducted tests on the latest versions of Chrome, Firefox, and Safari using the command: npm test
-Checklist
- Code conforms to the project's style guidelines.
- Code has been reviewed and approved by team members.
- Tests have been added or updated to cover new code.
- Documentation has been updated (if applicable).
- Code builds without errors or warnings.
- All checks and CI/CD pipelines have passed.
- PR is ready for merging.
-Additional Notes
-Collaborated with @teammember1 and @teammember2 to review and refine the proposed changes. This PR is a part of our continuous endeavor to improve the user experience.
+I tested these changes extensively:
 
-Reviewers
-@reviewer1, @reviewer2
+- Created test cases covering various scenarios, including valid and invalid inputs.
+- I tested on the latest versions of Chrome, Firefox, and Safari.
+- Used the following command for testing: `npm test`
 
+## Checklist
+
+- [ ] The code follows the project's style guidelines.
+- [ ] Code has been reviewed and approved by team members.
+- [ ] Tests have been added or updated to cover new code.
+- [ ] Documentation has been updated (if applicable).
+- [ ] The code builds without errors or warnings.
+- [ ] All checks and CI/CD pipelines have passed.
+- [ ] The PR is ready for merging.
+
+## Additional Notes
+
+I collaborated with @teammember1 and @teammember2 to review and refine these changes. This PR is part of our ongoing effort to improve the user experience.
